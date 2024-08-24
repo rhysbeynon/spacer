@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.code-disaster.steamworks4j:steamworks4j:1.9.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="com.code-disaster.steamworks4j" artifactId="steamworks4j" version="1.9.0" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.code-disaster.steamworks4j/steamworks4j/1.9.0/d69b7f7540745a8d569a5400554e34d42e035da8/steamworks4j-1.9.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

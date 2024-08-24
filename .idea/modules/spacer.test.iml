@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id="spacer:test" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="GRADLE" external.system.module.group="io.github.rhysbeynon.spacer" external.system.module.type="sourceSet" external.system.module.version="0.0.1-SNAPSHOT" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <output-test url="file://$MODULE_DIR$/../../build/classes/java/test" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../src/test">
+      <sourceFolder url="file://$MODULE_DIR$/../../src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../src/test/resources" type="java-test-resource" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="spacer.main" />
+    <orderEntry type="library" name="Gradle: org.joml:joml:1.10.5" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-assimp:3.3.4" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-bgfx:3.3.4" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-glfw:3.3.4" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-nanovg:3.3.4" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-nuklear:3.3.4" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-openal:3.3.4" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-opengl:3.3.4" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-par:3.3.4" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-stb:3.3.4" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl-vulkan:3.3.4" level="project" />
+    <orderEntry type="library" name="Gradle: org.lwjgl:lwjgl:3.3.4" level="project" />
+    <orderEntry type="library" name="Gradle: com.code-disaster.steamworks4j:steamworks4j:1.9.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-assimp:natives-macos-arm64:3.3.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-bgfx:natives-macos-arm64:3.3.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-glfw:natives-macos-arm64:3.3.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-nanovg:natives-macos-arm64:3.3.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-nuklear:natives-macos-arm64:3.3.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-openal:natives-macos-arm64:3.3.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-opengl:natives-macos-arm64:3.3.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-par:natives-macos-arm64:3.3.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-stb:natives-macos-arm64:3.3.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl-vulkan:natives-macos-arm64:3.3.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.lwjgl:lwjgl:natives-macos-arm64:3.3.4" level="project" />
+  </component>
+  <component name="TestModuleProperties" production-module="spacer.main" />
+</module>
