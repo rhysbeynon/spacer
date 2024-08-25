@@ -9,10 +9,13 @@ import org.lwjgl.system.MemoryStack;
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 
-public class WindowIcon {
+public class nonMacWindowIcon {
 
     //Method to set window icon
     public static void setIcon(WindowManager window, String iconPath) {
+        //initialize GLFW
+        GLFW.glfwInit();
+
         //load image for icon
         try (MemoryStack stack = MemoryStack.stackPush()) {
             IntBuffer width = stack.mallocInt(1);
@@ -23,7 +26,10 @@ public class WindowIcon {
             ByteBuffer icon = STBImage.stbi_load(iconPath, width, height, comp, 4);
             if (icon == null) {
                 throw new RuntimeException("Failed to load icon image: " + STBImage.stbi_failure_reason());
+            } else {
+                System.out.println("Loaded icon image " + iconPath);
             }
+
 
             //Create GLFW image
             GLFWImage.Buffer iconBuffer = GLFWImage.malloc(1);
@@ -35,7 +41,7 @@ public class WindowIcon {
             GLFW.glfwSetWindowIcon(WindowManager.window, iconBuffer);
 
             //free image from mem
-            STBImage.stbi_image_free(icon);
+           STBImage.stbi_image_free(icon);
         }
     }
 }

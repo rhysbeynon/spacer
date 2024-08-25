@@ -24,6 +24,7 @@ public class WindowManager {
     private final Matrix4f projectionMatrix;
 
     public WindowManager(boolean vSync, int height, int width, String title) {
+        long window;
         this.vSync = vSync;
         this.height = height;
         this.width = width;
@@ -53,9 +54,12 @@ public class WindowManager {
             maximized = true;
         }
 
+        //THIS IS WHERE THE WINDOW IS CREATED.
         window = GLFW.glfwCreateWindow(width, height, title, MemoryUtil.NULL, MemoryUtil.NULL);
-        if(window == MemoryUtil.NULL)
-            throw new RuntimeException("Failed to create the GLFW window (MemoryUtil)");
+
+        if (window == 0) {
+            throw new RuntimeException("Failed to create the GLFW window");
+        }
 
         GLFW.glfwSetFramebufferSizeCallback(window, (window ,width, height) -> {
             this.width = width;
@@ -154,12 +158,12 @@ public class WindowManager {
         this.height = height;
     }
 
-    public long getWindow() {
+    public static long getWindow() {
         return window;
     }
 
     public void setWindow(long window) {
-        this.window = window;
+        WindowManager.window = window;
     }
 
     public Matrix4f getProjectionMatrix() {

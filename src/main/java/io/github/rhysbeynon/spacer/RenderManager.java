@@ -1,7 +1,10 @@
 package io.github.rhysbeynon.spacer;
 
 import io.github.rhysbeynon.spacer.test.Launcher;
+import io.github.rhysbeynon.spacer.entity.Model;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL20;
+import org.lwjgl.opengl.GL30;
 
 public class RenderManager {
 
@@ -15,7 +18,12 @@ public class RenderManager {
 
     }
 
-    public void render() {
+    public void render(Model model) {
+        clear();
+        GL30.glBindVertexArray(model.getId());
+        GL20.glEnableVertexAttribArray(0);
+        GL11.glDrawArrays(GL11.GL_TRIANGLES, 0, model.getVertexCount());
+        GL20.glDisableVertexAttribArray(0);
 
     }
 
