@@ -1,13 +1,5 @@
 package io.github.rhysbeynon.spacer.client;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
 
 public class Player {
     private float x;

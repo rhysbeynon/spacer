@@ -1,4 +1,4 @@
-package io.github.rhysbeynon.spacer.client.trinkets;
+package io.github.rhysbeynon.spacer.client.Interface;
 
 import org.lwjgl.glfw.GLFW;
 

@@ -2,7 +2,7 @@ package io.github.rhysbeynon.spacer.client.renderer;
 
 import io.github.rhysbeynon.spacer.client.Player;
 import io.github.rhysbeynon.spacer.client.trinkets.Config;
-import io.github.rhysbeynon.spacer.client.trinkets.Input;
+import io.github.rhysbeynon.spacer.client.Interface.Input;
 import io.github.rhysbeynon.spacer.client.trinkets.Phys;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFW;
@@ -11,8 +11,6 @@ import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
 
 import io.github.rhysbeynon.spacer.client.trinkets.FrameCounter;
-
-import static org.lwjgl.glfw.GLFW.*;
 
 public class RenderManager {
     public long window;
@@ -36,7 +34,7 @@ public class RenderManager {
         // Create the window
         String windowTitle = "Initializing";
 
-        //window resolution is at a 15.4:10 aspect ratio upon initialization. To maintain
+        //window resolution is at a 15.4:10 aspect ratio upon initialization. The best aspect ratio.
         int height = 700;
         int width = height * 154/100;
 
@@ -97,17 +95,10 @@ public class RenderManager {
             if (Config.DEBUG_MODE) {
                 Input.debugPrintKeyNames();
                 if (FrameCounter.validFPS) {
-                    GLFW.glfwSetWindowTitle(window, "Engine " + FrameCounter.fps + " [" + Input.pressedKey + "]" );
+                    GLFW.glfwSetWindowTitle(window, "Engine " + FrameCounter.fps + " [" + io.github.rhysbeynon.spacer.client.Interface.Input.pressedKey + "]" );
                 }
             } else {
                 GL11.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-            }
-
-            if (Input.isKeyPressed(GLFW_KEY_LEFT_SHIFT) && Input.isKeyPressed(GLFW_KEY_D)) {
-                Config.DEBUG_MODE = !Config.DEBUG_MODE;
-            }
-            if (Input.isKeyPressed(GLFW_KEY_ESCAPE)) {
-                GLFW.glfwSetWindowShouldClose(window, true);
             }
 
             if (!Config.DEBUG_MODE & FrameCounter.validFPS) {

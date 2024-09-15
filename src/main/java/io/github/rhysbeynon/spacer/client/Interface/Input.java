@@ -1,5 +1,6 @@
-package io.github.rhysbeynon.spacer.client.trinkets;
+package io.github.rhysbeynon.spacer.client.Interface;
 
+import io.github.rhysbeynon.spacer.client.trinkets.Config;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWKeyCallback;
 
@@ -10,7 +11,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class Input implements Runnable {
     private final long window;
     private final Map<Integer, Boolean> keyState = new ConcurrentHashMap<>();
-    private final Map<Integer, String> keyNames;
+    private static final Map<Integer, String> keyNames = KeyNames.getKeyNames();
     private GLFWKeyCallback keyCallback;
     private final AtomicBoolean running = new AtomicBoolean(false);
     private final Thread inputThread;
@@ -18,9 +19,17 @@ public class Input implements Runnable {
 
     public Input(long window) {
         this.window = window;
-        this.keyNames = KeyNames.getKeyNames(); // Initialise the key's name mappings
         this.inputThread = new Thread(this); // Initialise the input thread
     }
+
+    private static int getKeyCode(String keyName) {
+        return keyNames.entrySet()
+                .stream()
+                .filter(entry -> entry.getValue().equals(keyName))
+                .map(Map.Entry::getKey)
+                .findFirst()
+                .orElse(-1);
+    };
 
     public void initialize() {
         keyCallback = new GLFWKeyCallback() {
@@ -32,17 +41,20 @@ public class Input implements Runnable {
                     keyState.put(key, false);
                 }
                 // Handle key-specific actions
-                handleSpecialKeys(window, key, action);
+                SYSTEM_CONTROLS(window, key, action);
             }
 
             // DEBUG CHARACTERS USED FOR SPECIAL COMMANDS AND ACTIONS
             // THIS IS NOT PRODUCTION CODE. PLEASE REMOVE OR DISABLE DEBUG MODE
-            private void handleSpecialKeys(long window, int key, int action) {
-                if (key == GLFW.GLFW_KEY_Q && action == GLFW.GLFW_RELEASE) {
+            private void SYSTEM_CONTROLS(long window, int key, int action) {
+                if (KeyPress(getKeyCode("Escape")) || KeyPress(getKeyCode("Q"))) {
                     GLFW.glfwSetWindowShouldClose(window, true);
                 }
-                if (key == GLFW.GLFW_KEY_V && action == GLFW.GLFW_RELEASE) {
+                if (KeyPress(getKeyCode("V"))) {
                     Config.VSYNC = !Config.VSYNC;
+                }
+                if (KeyPress(getKeyCode("Left Shift")) && KeyPress(getKeyCode("0"))) {
+                    Config.DEBUG_MODE = !Config.DEBUG_MODE;
                 }
             }
 
@@ -54,7 +66,7 @@ public class Input implements Runnable {
         GLFW.glfwSetKeyCallback(window, keyCallback);
     }
 
-    public boolean isKeyPressed(int key) {
+    public boolean KeyPress(int key) {
         return keyState.getOrDefault(key, false);
     }
 
