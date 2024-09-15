@@ -1,6 +1,7 @@
 package io.github.rhysbeynon.spacer.client.Interface;
 
 import io.github.rhysbeynon.spacer.client.trinkets.Config;
+import io.github.rhysbeynon.spacer.client.Interface.Controls;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWKeyCallback;
 
@@ -10,7 +11,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Input implements Runnable {
     private final long window;
-    private final Map<Integer, Boolean> keyState = new ConcurrentHashMap<>();
+    private static final Map<Integer, Boolean> keyState = new ConcurrentHashMap<>();
     private static final Map<Integer, String> keyNames = KeyNames.getKeyNames();
     private GLFWKeyCallback keyCallback;
     private final AtomicBoolean running = new AtomicBoolean(false);
@@ -22,7 +23,7 @@ public class Input implements Runnable {
         this.inputThread = new Thread(this); // Initialise the input thread
     }
 
-    private static int getKeyCode(String keyName) {
+    public static int getKeyCode(String keyName) {
         return keyNames.entrySet()
                 .stream()
                 .filter(entry -> entry.getValue().equals(keyName))
@@ -41,21 +42,7 @@ public class Input implements Runnable {
                     keyState.put(key, false);
                 }
                 // Handle key-specific actions
-                SYSTEM_CONTROLS(window, key, action);
-            }
-
-            // DEBUG CHARACTERS USED FOR SPECIAL COMMANDS AND ACTIONS
-            // THIS IS NOT PRODUCTION CODE. PLEASE REMOVE OR DISABLE DEBUG MODE
-            private void SYSTEM_CONTROLS(long window, int key, int action) {
-                if (KeyPress(getKeyCode("Escape")) || KeyPress(getKeyCode("Q"))) {
-                    GLFW.glfwSetWindowShouldClose(window, true);
-                }
-                if (KeyPress(getKeyCode("V"))) {
-                    Config.VSYNC = !Config.VSYNC;
-                }
-                if (KeyPress(getKeyCode("Left Shift")) && KeyPress(getKeyCode("0"))) {
-                    Config.DEBUG_MODE = !Config.DEBUG_MODE;
-                }
+                Controls.KeyBindings(window, key, action);
             }
 
             public boolean isKeyPressed(int key) {
@@ -66,7 +53,7 @@ public class Input implements Runnable {
         GLFW.glfwSetKeyCallback(window, keyCallback);
     }
 
-    public boolean KeyPress(int key) {
+    public static boolean KeyPress(int key) {
         return keyState.getOrDefault(key, false);
     }
 

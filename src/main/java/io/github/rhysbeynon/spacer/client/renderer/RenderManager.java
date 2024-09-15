@@ -12,6 +12,8 @@ import org.lwjgl.opengl.GL11;
 
 import io.github.rhysbeynon.spacer.client.trinkets.FrameCounter;
 
+import static io.github.rhysbeynon.spacer.client.Interface.Input.pressedKey;
+
 public class RenderManager {
     public long window;
     private Input Input;
@@ -95,7 +97,7 @@ public class RenderManager {
             if (Config.DEBUG_MODE) {
                 Input.debugPrintKeyNames();
                 if (FrameCounter.validFPS) {
-                    GLFW.glfwSetWindowTitle(window, "Engine " + FrameCounter.fps + " [" + io.github.rhysbeynon.spacer.client.Interface.Input.pressedKey + "]" );
+                    GLFW.glfwSetWindowTitle(window, "Engine " + FrameCounter.fps + " [" + pressedKey + "]" );
                 }
             } else {
                 GL11.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
